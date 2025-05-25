@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious - Authentic Indian Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="chef-hat">👨‍🍳</div>
+            <p>Loading Delicious Experience...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="navigation">
+            <div class="img_logo">
+                <h2>Delicious</h2>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#menu" class="nav-link">Menu</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="mobile-menu-toggle">☰</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-particles"></div>
+        <div class="hero-content">
+            <div class="tag">
+                <h3>Taste of India</h3>
+            </div>
+            <div class="written">
+                <h1>Enjoy your <br> <span class="typewriter-container">
+                        <span class="typewriter-text">Authentic Indian cuisine</span>
+                        <span class="typewriter-text">Spicy curries</span>
+                        <span class="typewriter-text">Fresh naan</span>
+                        <span class="typewriter-text">Perfect tandoori</span>
+                    </span></h1>
+                <p>Savor the rich flavors of India with our carefully crafted dishes, made with love and tradition.</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="#menu" class="herobtn primary-btn" id="explore-btn">Explore Menu</a>
+                <button class="herobtn secondary-btn" id="order-btn">Order Now</button>
+            </div>
+        </div>
+        <div class="heroimage">
+            <div class="food-showcase">
+                <div class="floating-food">🍕</div>
+                <div class="floating-food">🥐</div>
+                <div class="floating-food">🍔</div>
+                <div class="floating-food">🥗</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-header">
+            <h2>Why Choose Us</h2>
+            <p>Experience the best of Indian dining with our unique offerings.</p>
+        </div>
+        <div class="cousection">
+            <div class="feature-card">
+                <div class="feature-icon">🍴</div>
+                <div class="feature-content">
+                    <h4>Authentic Recipes</h4>
+                    <p>Traditional Indian recipes passed down through generations.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <div class="feature-content">
+                    <h4>Fast Delivery</h4>
+                    <p>Get your meal delivered hot and fresh to your door.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👨‍🍳</div>
+                <div class="feature-content">
+                    <h4>Expert Chefs</h4>
+                    <p>Our chefs bring the essence of India to every dish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="section-header">
+            <h2>Our Menu</h2>
+            <p>Explore our delicious offerings, crafted with authentic Indian spices.</p>
+        </div>
+        <div class="menu-categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="main">Main Course</button>
+            <button class="category-btn" data-category="appetizer">Appetizers</button>
+            <button class="category-btn" data-category="dessert">Desserts</button>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-item" data-category="main">
+                <div class="menu-item-image">
+                    <img src="images/grid_image1.png" alt="South Indian Platter" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="South Indian Platter" data-price="₹250">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>South Indian Platter</h4>
+                    <p>A vibrant mix of dosas, idlis, sambar, and chutneys bursting with South Indian flavors.</p>
+                    <div class="price">₹250</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="main">
+                <div class="menu-item-image">
+                    <img src="images/grid_image2.png" alt="Rajma Naan" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="Rajma Naan" data-price="200">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>Rajma Naan</h4>
+                    <p>Creamy kidney beans simmered in spices, served with soft, fluffy naan.</p>
+                    <div class="price">₹200</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="appetizer">
+                <div class="menu-item-image">
+                    <img src="images/grid_image3.png" alt="pickle" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="pickle" data-price="80">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>pickle</h4>
+                    <p>Tangy, spiced vegetables or fruits preserved in oil and bursting with bold flavor.</p>
+                    <div class="price">₹80</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="dessert">
+                <div class="menu-item-image">
+                    <img src="images/grid_image4.png" alt="Gulab Jamun" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="Gulab Jamun" data-price="150">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>Gulab Jamun</h4>
+                    <p>Soft, syrupy dumplings made from milk solids.</p>
+                    <div class="price">₹150</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="dessert">
+                <div class="menu-item-image">
+                    <img src="images/grid_image5.png" alt="Egg on Toast" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="Egg on Toast" data-price="50">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>Egg on Toast</h4>
+                    <p>Crisp toast topped with a perfectly cooked egg, simple and satisfying.</p>
+                    <div class="price">₹50</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="appetizer">
+                <div class="menu-item-image">
+                    <img src="images/grid_image6.png" alt="Dumplings" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="Dumplings" data-price="100">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>Dumplings</h4>
+                    <p>Soft dough pockets filled with savory goodness, steamed or fried to perfection.</p>
+                    <div class="price">₹100</div>
+                </div>
+            </div>
+            <div class="menu-item" data-category="main">
+                <div class="menu-item-image">
+                    <img src="images/grid_image7.png" alt="Butter Chicken" class="menu-item-img">
+                    <div class="item-overlay">
+                        <button class="add-to-cart" data-item="Butter Chicken" data-price="300">➕</button>
+                    </div>
+                </div>
+                <div class="menu-item-content">
+                    <h4>Butter Chicken</h4>
+                    <p>Tender chicken cooked in a rich, creamy tomato sauce with Indian spices</p>
+                    <div class="price"> ₹300</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h3>About Delicious</h3>
+                <p>At Delicious, we bring the vibrant flavors of India to your plate. Our chefs use authentic spices and
+                    traditional recipes to create unforgettable dining experiences.</p>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <h4>10K+</h4>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat">
+                    <h4>50+</h4>
+                    <p>Indian Dishes</p>
+                </div>
+                <div class="stat">
+                    <h4>4.8⭐</h4>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h2>Delicious</h2>
+                <p>Experience the taste of India with every bite.</p>
+                <div class="social-links">
+                    <div class="social-icon">📘</div>
+                    <div class="social-icon">🐦</div>
+                    <div class="social-icon">📷</div>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <div class="footer-link" data-action="track-order">Track Order</div>
+                <div class="footer-link" data-action="new-order">New Order </div>
+                <div class="footer-link" data-action="contact">Contact</div>
+            </div>
+            <div class="footer-section links">
+                <h3>Resources</h3>
+                <div class="footer-link" data-action="blog">Blog</div>
+                <div class="footer-link" data-action="about">About</div>
+                <div class="footer-link" data-action="privacy">Privacy Policy</div>
+                <div class="footer-link" data-action="terms">Terms & Conditions</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Delicious. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart 🛒</h3>
+            <button id="close-cart">✖</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">Total: ₹<span id="cart-total">0.00</span></div>
+            <button class="checkout-btn" id="checkout-btn">Checkout 🛒</button>
+        </div>
+    </div>
+
+    <!-- Cart Icon -->
+    <div id="cart-icon" class="cart-icon">
+        🛒
+        <span id="cart-count" class="cart-count">0</span>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+</body>
+
+</html
