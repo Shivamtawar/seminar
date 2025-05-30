@@ -1,289 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicious - Authentic Indian Restaurant</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Quest</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a23;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(20, 20, 40, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: slideIn 1s ease-out;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    input[type="number"] {
+      padding: 12px;
+      font-size: 1.2em;
+      width: 120px;
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s ease;
+      -webkit-appearance: none;
+      -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"]:focus {
+      box-shadow: 0 0 15px #00ffff;
+      transform: scale(1.05);
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+    }
+
+    .loader-container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .loader-container.show {
+      display: flex;
+    }
+
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #00ffff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    .loader-text {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+      animation: fadeText 6s infinite;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: rgba(20, 20, 40, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      border: 2px solid #ff00ff;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+      max-width: 350px;
+      width: 90%;
+      transition: transform 0.5s ease-in-out;
+      z-index: 1000;
+    }
+
+    .popup.show {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup h2 {
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+
+    .popup p {
+      color: #fff;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .popup button {
+      background: linear-gradient(45deg, #ff00ff, #ff6b6b);
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeText {
+      0%, 33% { content: "Working on it..."; opacity: 1; }
+      34%, 66% { content: "Analyzing data..."; opacity: 1; }
+      67%, 100% { content: "Almost there..."; opacity: 1; }
+    }
+
+    .loader-text::before {
+      content: "Working on it...";
+      animation: fadeText 6s infinite;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      input[type="number"] {
+        width: 100px;
+        font-size: 1em;
+      }
+
+      button {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
+
+      .popup {
+        padding: 20px;
+        max-width: 80%;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loader">
-            <div class="chef-hat">👨‍🍳</div>
-            <p>Loading Delicious Experience...</p>
-        </div>
+  <div class="container">
+    <h1>Age Quest</h1>
+    <div class="input-group">
+      <input type="number" id="ageInput" placeholder="Your age" min="0" max="150">
+      <button onclick="startResearch()">Start Quest</button>
     </div>
-
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="navigation">
-            <div class="img_logo">
-                <h2>Delicious</h2>
-            </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#menu" class="nav-link">Menu</a>
-                <a href="#about" class="nav-link">About</a>
-            </div>
-            <div class="mobile-menu-toggle">☰</div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-particles"></div>
-        <div class="hero-content">
-            <div class="tag">
-                <h3>Taste of India</h3>
-            </div>
-            <div class="written">
-                <h1>Enjoy your <br> <span class="typewriter-container">
-                        <span class="typewriter-text">Authentic Indian cuisine</span>
-                        <span class="typewriter-text">Spicy curries</span>
-                        <span class="typewriter-text">Fresh naan</span>
-                        <span class="typewriter-text">Perfect tandoori</span>
-                    </span></h1>
-                <p>Savor the rich flavors of India with our carefully crafted dishes, made with love and tradition.</p>
-            </div>
-            <div class="hero-buttons">
-                <a href="#menu" class="herobtn primary-btn" id="explore-btn">Explore Menu</a>
-                <button class="herobtn secondary-btn" id="order-btn">Order Now</button>
-            </div>
-        </div>
-        <div class="heroimage">
-            <div class="food-showcase">
-                <div class="floating-food">🍕</div>
-                <div class="floating-food">🥐</div>
-                <div class="floating-food">🍔</div>
-                <div class="floating-food">🥗</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-        <div class="section-header">
-            <h2>Why Choose Us</h2>
-            <p>Experience the best of Indian dining with our unique offerings.</p>
-        </div>
-        <div class="cousection">
-            <div class="feature-card">
-                <div class="feature-icon">🍴</div>
-                <div class="feature-content">
-                    <h4>Authentic Recipes</h4>
-                    <p>Traditional Indian recipes passed down through generations.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚚</div>
-                <div class="feature-content">
-                    <h4>Fast Delivery</h4>
-                    <p>Get your meal delivered hot and fresh to your door.</p>
-                </div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">👨‍🍳</div>
-                <div class="feature-content">
-                    <h4>Expert Chefs</h4>
-                    <p>Our chefs bring the essence of India to every dish.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menu" class="menu-section">
-        <div class="section-header">
-            <h2>Our Menu</h2>
-            <p>Explore our delicious offerings, crafted with authentic Indian spices.</p>
-        </div>
-        <div class="menu-categories">
-            <button class="category-btn active" data-category="all">All</button>
-            <button class="category-btn" data-category="main">Main Course</button>
-            <button class="category-btn" data-category="appetizer">Appetizers</button>
-            <button class="category-btn" data-category="dessert">Desserts</button>
-        </div>
-        <div class="menu-grid">
-            <div class="menu-item" data-category="main">
-                <div class="menu-item-image">
-                    <img src="images/grid_image1.png" alt="South Indian Platter" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="South Indian Platter" data-price="₹250">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>South Indian Platter</h4>
-                    <p>A vibrant mix of dosas, idlis, sambar, and chutneys bursting with South Indian flavors.</p>
-                    <div class="price">₹250</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="main">
-                <div class="menu-item-image">
-                    <img src="images/grid_image2.png" alt="Rajma Naan" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="Rajma Naan" data-price="200">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>Rajma Naan</h4>
-                    <p>Creamy kidney beans simmered in spices, served with soft, fluffy naan.</p>
-                    <div class="price">₹200</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="appetizer">
-                <div class="menu-item-image">
-                    <img src="images/grid_image3.png" alt="pickle" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="pickle" data-price="80">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>pickle</h4>
-                    <p>Tangy, spiced vegetables or fruits preserved in oil and bursting with bold flavor.</p>
-                    <div class="price">₹80</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="dessert">
-                <div class="menu-item-image">
-                    <img src="images/grid_image4.png" alt="Gulab Jamun" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="Gulab Jamun" data-price="150">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>Gulab Jamun</h4>
-                    <p>Soft, syrupy dumplings made from milk solids.</p>
-                    <div class="price">₹150</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="dessert">
-                <div class="menu-item-image">
-                    <img src="images/grid_image5.png" alt="Egg on Toast" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="Egg on Toast" data-price="50">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>Egg on Toast</h4>
-                    <p>Crisp toast topped with a perfectly cooked egg, simple and satisfying.</p>
-                    <div class="price">₹50</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="appetizer">
-                <div class="menu-item-image">
-                    <img src="images/grid_image6.png" alt="Dumplings" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="Dumplings" data-price="100">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>Dumplings</h4>
-                    <p>Soft dough pockets filled with savory goodness, steamed or fried to perfection.</p>
-                    <div class="price">₹100</div>
-                </div>
-            </div>
-            <div class="menu-item" data-category="main">
-                <div class="menu-item-image">
-                    <img src="images/grid_image7.png" alt="Butter Chicken" class="menu-item-img">
-                    <div class="item-overlay">
-                        <button class="add-to-cart" data-item="Butter Chicken" data-price="300">➕</button>
-                    </div>
-                </div>
-                <div class="menu-item-content">
-                    <h4>Butter Chicken</h4>
-                    <p>Tender chicken cooked in a rich, creamy tomato sauce with Indian spices</p>
-                    <div class="price"> ₹300</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <div class="about-text">
-                <h3>About Delicious</h3>
-                <p>At Delicious, we bring the vibrant flavors of India to your plate. Our chefs use authentic spices and
-                    traditional recipes to create unforgettable dining experiences.</p>
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <h4>10K+</h4>
-                    <p>Happy Customers</p>
-                </div>
-                <div class="stat">
-                    <h4>50+</h4>
-                    <p>Indian Dishes</p>
-                </div>
-                <div class="stat">
-                    <h4>4.8⭐</h4>
-                    <p>Average Rating</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h2>Delicious</h2>
-                <p>Experience the taste of India with every bite.</p>
-                <div class="social-links">
-                    <div class="social-icon">📘</div>
-                    <div class="social-icon">🐦</div>
-                    <div class="social-icon">📷</div>
-                </div>
-            </div>
-            <div class="footer-section links">
-                <h3>Quick Links</h3>
-                <div class="footer-link" data-action="track-order">Track Order</div>
-                <div class="footer-link" data-action="new-order">New Order </div>
-                <div class="footer-link" data-action="contact">Contact</div>
-            </div>
-            <div class="footer-section links">
-                <h3>Resources</h3>
-                <div class="footer-link" data-action="blog">Blog</div>
-                <div class="footer-link" data-action="about">About</div>
-                <div class="footer-link" data-action="privacy">Privacy Policy</div>
-                <div class="footer-link" data-action="terms">Terms & Conditions</div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Delicious. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h3>Your Cart 🛒</h3>
-            <button id="close-cart">✖</button>
-        </div>
-        <div id="cart-items" class="cart-items">
-            <p class="empty-cart">Your cart is empty</p>
-        </div>
-        <div class="cart-footer">
-            <div class="cart-total">Total: ₹<span id="cart-total">0.00</span></div>
-            <button class="checkout-btn" id="checkout-btn">Checkout 🛒</button>
-        </div>
+    <div class="loader-container" id="loader">
+      <div class="loader"></div>
+      <div class="loader-text"></div>
     </div>
+  </div>
 
-    <!-- Cart Icon -->
-    <div id="cart-icon" class="cart-icon">
-        🛒
-        <span id="cart-count" class="cart-count">0</span>
-    </div>
+  <div class="popup" id="resultPopup">
+    <h2>Quest Complete!</h2>
+    <p id="resultText"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast">
-        <span id="toast-message"></span>
-    </div>
+  <script>
+    function startResearch() {
+      const ageInput = document.getElementById('ageInput').value;
+      const loader = document.getElementById('loader');
+      const popup = document.getElementById('resultPopup');
+      const resultText = document.getElementById('resultText');
+
+      if (!ageInput || ageInput < 0 || ageInput > 150) {
+        alert('Please enter a valid age between 0 and 150.');
+        return;
+      }
+
+      loader.classList.add('show');
+      document.getElementById('ageInput').disabled = true;
+      document.querySelector('button').disabled = true;
+
+      setTimeout(() => {
+        loader.classList.remove('show');
+        resultText.textContent = `Our cosmic quest reveals your age is ${ageInput}! 🌟`;
+        popup.classList.add('show');
+        document.getElementById('ageInput').disabled = false;
+        document.querySelector('button').disabled = false;
+      }, 3000);
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('resultPopup');
+      popup.classList.remove('show');
+      document.getElementById('ageInput').value = '';
+    }
+  </script>
 </body>
-
-</html
+</html>
