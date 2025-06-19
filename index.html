@@ -7,6 +7,8 @@
     <title>Delicious - Authentic Indian Restaurant</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <!-- Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 
 <body>
@@ -112,7 +114,7 @@
                 <div class="menu-item-image">
                     <img src="images/grid_image1.png" alt="South Indian Platter" class="menu-item-img">
                     <div class="item-overlay">
-                        <button class="add-to-cart" data-item="South Indian Platter" data-price="₹250">➕</button>
+                        <button class="add-to-cart" data-item="South Indian Platter" data-price="250">➕</button>
                     </div>
                 </div>
                 <div class="menu-item-content">
@@ -136,13 +138,13 @@
             </div>
             <div class="menu-item" data-category="appetizer">
                 <div class="menu-item-image">
-                    <img src="images/grid_image3.png" alt="pickle" class="menu-item-img">
+                    <img src="images/grid_image3.png" alt="Pickle" class="menu-item-img">
                     <div class="item-overlay">
-                        <button class="add-to-cart" data-item="pickle" data-price="80">➕</button>
+                        <button class="add-to-cart" data-item="Pickle" data-price="80">➕</button>
                     </div>
                 </div>
                 <div class="menu-item-content">
-                    <h4>pickle</h4>
+                    <h4>Pickle</h4>
                     <p>Tangy, spiced vegetables or fruits preserved in oil and bursting with bold flavor.</p>
                     <div class="price">₹80</div>
                 </div>
@@ -196,10 +198,9 @@
                 <div class="menu-item-content">
                     <h4>Butter Chicken</h4>
                     <p>Tender chicken cooked in a rich, creamy tomato sauce with Indian spices</p>
-                    <div class="price"> ₹300</div>
+                    <div class="price">₹300</div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -208,8 +209,7 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>About Delicious</h3>
-                <p>At Delicious, we bring the vibrant flavors of India to your plate. Our chefs use authentic spices and
-                    traditional recipes to create unforgettable dining experiences.</p>
+                <p>At Delicious, we bring the vibrant flavors of India to your plate. Our chefs use authentic spices and traditional recipes to create unforgettable dining experiences.</p>
             </div>
             <div class="stats">
                 <div class="stat">
@@ -259,6 +259,37 @@
         </div>
     </footer>
 
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="checkout-modal">
+        <div class="checkout-modal-content">
+            <span id="close-checkout-modal" class="close-checkout-modal">✖</span>
+            <h3>Complete Your Order</h3>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="customer-name">Name</label>
+                    <input type="text" id="customer-name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" required placeholder="+919000090000" pattern="\+91[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Delivery Address</label>
+                    <textarea id="customer-address" required placeholder="Enter your delivery address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" required>
+                        <option value="" disabled selected>Select payment method</option>
+                        <option value="cod">Pay on Delivery</option>
+                        <option value="upi">UPI (via Razorpay)</option>
+                    </select>
+                </div>
+                <button type="submit" class="checkout-btn">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Cart Sidebar -->
     <div id="cart-sidebar" class="cart-sidebar">
         <div class="cart-header">
@@ -286,4 +317,4 @@
     </div>
 </body>
 
-</html
+</html>

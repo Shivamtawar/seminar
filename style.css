@@ -301,12 +301,12 @@ body {
     50% { transform: scaleX(1); }
 }
 
-.typewriter {
-    animation: typewriter 4s steps(30) 1s forwards;
-    overflow: hidden;
-    white-space: nowrap;
+.typewriter-text {
+    display: inline-block;
     border-right: 2px solid var(--primary-color);
-    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinkCursor 0.7s step-end infinite;
 }
 
 @keyframes typewriter {
@@ -382,106 +382,105 @@ body {
     transform: translateY(-2px);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 100px 1rem 2rem;
-        gap: 2rem;
-    }
-    
-    .hero-content {
-        order: 2;
-        max-width: 100%;
-    }
-    
-    .heroimage {
-        order: 1;
-    }
-    
-    .food-showcase {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .floating-food {
-        font-size: 3rem;
-        width: 60px;
-        height: 60px;
-    }
-    
-    .hero-buttons {
-        justify-content: center;
-    }
-    
-    .herobtn {
-        min-width: 120px;
-        padding: 0.8rem 1.5rem;
-    }
+/* Checkout Modal */
+.checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
 }
 
-@media (max-width: 480px) {
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .herobtn {
-        width: 100%;
-        max-width: 250px;
-    }
+.checkout-modal.open {
+    display: flex;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 100px 1rem 2rem;
-        gap: 2rem;
-    }
-    
-    .hero-content {
-        order: 2;
-        max-width: 100%;
-    }
-    
-    .heroimage {
-        order: 1;
-    }
-    
-    .food-showcase {
-        width: 300px;
-        height: 300px;
-    }
-    
-    .floating-food {
-        font-size: 3rem;
-        width: 60px;
-        height: 60px;
-    }
-    
-    .hero-buttons {
-        justify-content: center;
-    }
-    
-    .herobtn {
-        min-width: 120px;
-        padding: 0.8rem 1.5rem;
-    }
+.checkout-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow);
+    position: relative;
 }
 
-@media (max-width: 480px) {
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .herobtn {
-        width: 100%;
-        max-width: 250px;
-    }
+.close-checkout-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.close-checkout-modal:hover {
+    color: var(--primary-color);
+}
+
+.checkout-modal-content h3 {
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid var(--light-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 /* Features Section */
@@ -703,7 +702,7 @@ body {
     background: white;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     z-index: 1001;
-    transition: right 0.3s ease;
+    transition: right 0.3sEase;
     display: flex;
     flex-direction: column;
 }
@@ -1045,25 +1044,37 @@ footer {
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 2rem 1rem;
+        padding: 100px 1rem 2rem;
+        gap: 2rem;
     }
     
-    .written h1 {
-        font-size: 2.5rem;
+    .hero-content {
+        order: 2;
+        max-width: 100%;
+    }
+    
+    .heroimage {
+        order: 1;
+    }
+    
+    .food-showcase {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .floating-food {
+        font-size: 3rem;
+        width: 60px;
+        height: 60px;
     }
     
     .hero-buttons {
         justify-content: center;
-        flex-wrap: wrap;
     }
     
-    .food-showcase {
-        width: 250px;
-        height: 250px;
-    }
-    
-    .floating-food {
-        font-size: 2rem;
+    .herobtn {
+        min-width: 120px;
+        padding: 0.8rem 1.5rem;
     }
     
     .cart-sidebar {
@@ -1091,6 +1102,23 @@ footer {
     .social-links {
         justify-content: center;
     }
+    
+    .checkout-modal-content {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .herobtn {
+        width: 100%;
+        max-width: 250px;
+    }
 }
 
 /* Animation utilities */
@@ -1105,13 +1133,94 @@ footer {
     }
 }
 
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+@keyframes slideInRight {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
 }
 
-.animate-on-scroll.animated {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+}
+
+@keyframes ripple {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes bounceIn {
+    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
+    70% { transform: translate(-50%, -50%) scale(0.9); }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideDown {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { border-color: var(--primary-color); }
+    50% { border-color: transparent; }
+}
+
+#checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+#checkout-modal.open {
+    display: flex;
+}
+.checkout-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: bounceIn 0.5s ease-out;
+}
+#checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#checkout-form label {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+#checkout-form input, #checkout-form textarea, #checkout-form select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
 }
